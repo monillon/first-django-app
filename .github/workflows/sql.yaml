@@ -26,7 +26,7 @@ jobs:
       run: docker compose ls
 
     - name: init database
-      run:|
+      run: |
         psql --version
         psql postgresql://maxoni:maxoni@localhost:5432 -a -f init.sql
 
