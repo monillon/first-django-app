@@ -1,0 +1,68 @@
+name: Init SQL
+
+on:
+  push:
+    branches: [ "develop" ]
+  pull_request:
+    branches: [ "develop" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        # Docker Hub image
+        image: postgres
+        # Provide the password for postgres
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: changeme
+        ports:
+          # Maps tcp port 5432 on service container to the host
+          - 5432:5432
+
+
+
+    steps:
+    # - uses: actions/checkout@v4
+    # - name: Docker compose install
+    #   uses: hoverkraft-tech/compose-action@v2.2.0
+    #   with: 
+    #     compose-file: "./docker-compose.yaml"
+
+    - name: bla bla
+      run: echo "le docker compose est passé"
+
+    - name: test ls compose
+      run: docker compose ls
+
+    # - name: init database
+    #   uses: nandemo-ya/sql-execution-action@v0.0.2
+    #   with:
+    #     engine: postgres
+    #     datasource: postgresql://postgres:changeme@localhost:5432
+    #     command
+
+
+
+
+    - name: init database
+      run: |
+        psql --version
+        psql postgresql://postgres:changeme@localhost:5432 -a -f init.sql
+
+
+
+
+
+
+
+
+    # - name: Setup PostgreSQL
+    #   uses: tj-actions/install-postgresql@v3
+    #   with:
+    #     postgresql-version: 17
+
