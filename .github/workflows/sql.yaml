@@ -25,6 +25,14 @@ jobs:
     - name: test ls compose
       run: docker compose ls
 
+    - name: init database
+      run:|
+        psql --version
+        psql postgresql://maxoni:maxoni@localhost:5432 -a -f init.sql
+
+
+
+
 
 
 
