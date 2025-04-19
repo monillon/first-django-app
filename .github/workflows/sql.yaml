@@ -28,7 +28,7 @@ jobs:
     - name: init database
       run: |
         psql --version
-        psql postgresql://maxoni:maxoni@localhost:5432 -a -f init.sql
+        psql postgresql://postgres:changeme@localhost:5432 -a -f init.sql
 
 
 
