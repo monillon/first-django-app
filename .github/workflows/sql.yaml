@@ -12,18 +12,38 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    services:
+      postgres:
+        # Docker Hub image
+        image: postgres
+        # Provide the password for postgres
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: changeme
+
+
     steps:
-    - uses: actions/checkout@v4
-    - name: Docker compose install
-      uses: hoverkraft-tech/compose-action@v2.2.0
-      with: 
-        compose-file: "./docker-compose.yaml"
+    # - uses: actions/checkout@v4
+    # - name: Docker compose install
+    #   uses: hoverkraft-tech/compose-action@v2.2.0
+    #   with: 
+    #     compose-file: "./docker-compose.yaml"
 
     - name: bla bla
       run: echo "le docker compose est passé"
 
     - name: test ls compose
       run: docker compose ls
+
+    # - name: init database
+    #   uses: nandemo-ya/sql-execution-action@v0.0.2
+    #   with:
+    #     engine: postgres
+    #     datasource: postgresql://postgres:changeme@localhost:5432
+    #     command
+
+
+
 
     - name: init database
       run: |
